@@ -298,18 +298,32 @@ function cleanTitle(str){
 }
 function parseFile(name){
   const n = name.replace(/\.[^/.]+$/,'');
-  const patterns = [
+  // Padrões com o NOME DA SÉRIE ANTES do número (ex: "My Hero Academia 1x1.mp4")
+  const nameFirst = [
     { re:/^(.*?)[\s._-]+[Ss](\d{1,2})[\s._-]*[Ee](\d{1,3})/, h:(m)=>({series:m[1],season:+m[2],episode:+m[3]}) },
-    { re:/^(.*?)[\s._-]+(\d{1,2})x(\d{1,3})(?:\s*-\s*(.*))?/i, h:(m)=>({series:m[1],season:+m[2],episode:+m[3],epTitle:m[4]}) },
+    { re:/^(.+?)[\s._-]+(\d{1,2})x(\d{1,3})(?:\s*-\s*(.*))?/i, h:(m)=>({series:m[1],season:+m[2],episode:+m[3],epTitle:m[4]}) },
     { re:/^(.*?)[\s._-]+T(\d{1,2})[\s._-]*E(\d{1,3})/i, h:(m)=>({series:m[1],season:+m[2],episode:+m[3]}) },
     { re:/^(.*?)[\s._]+Temporada\s*(\d{1,2})[\s._]+Ep(?:is[oó]dio)?\s*(\d{1,3})/i, h:(m)=>({series:m[1],season:+m[2],episode:+m[3]}) },
   ];
-  for (const p of patterns) {
+  // Padrões com o NÚMERO ANTES do nome (ex: "1x1 My Hero Academia Vigilantes.mp4")
+  const numberFirst = [
+    { re:/^(\d{1,2})x(\d{1,3})[\s._-]+(.+)$/i, h:(m)=>({season:+m[1],episode:+m[2],series:m[3]}) },
+    { re:/^[Ss](\d{1,2})[\s._-]*[Ee](\d{1,3})[\s._-]+(.+)$/, h:(m)=>({season:+m[1],episode:+m[2],series:m[3]}) },
+  ];
+  for (const p of nameFirst) {
     const m = n.match(p.re);
     if (m) {
       const d = p.h(m);
       const series = cleanTitle(d.series || '') || 'Série';
-      return { isSeries:true, seriesName:series, key:series.toLowerCase(), season:d.season, episode:d.episode, epTitle: d.epTitle ? cleanTitle(d.epTitle) : '' };
+      if (series) return { isSeries:true, seriesName:series, key:series.toLowerCase(), season:d.season, episode:d.episode, epTitle: d.epTitle ? cleanTitle(d.epTitle) : '' };
+    }
+  }
+  for (const p of numberFirst) {
+    const m = n.match(p.re);
+    if (m) {
+      const d = p.h(m);
+      const series = cleanTitle(d.series || '') || 'Série';
+      return { isSeries:true, seriesName:series, key:series.toLowerCase(), season:d.season, episode:d.episode, epTitle:'' };
     }
   }
   return { isSeries:false, title: cleanTitle(n) || 'Sem Título' };
