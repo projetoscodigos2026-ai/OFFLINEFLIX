@@ -21,7 +21,7 @@
 })();
 </script><script>window.Intl=window.Intl||{};Intl.t=function(s){return(Intl._locale&&Intl._locale[s])||s;};</script>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>OFFLINEFLIX</title>
 <style>
 :root{--bg:#0a0a0a; --surface:#141414; --surface2:#1a1a1a; --surface3:#161616; --red:#e50914; --red-dark:#b20710; --red-bright:#f40612; --text:#fff; --dim:rgba(255,255,255,.6); --dim2:rgba(255,255,255,.4); --dim3:rgba(255,255,255,.3); --border:rgba(255,255,255,.1); --border2:rgba(255,255,255,.06);}
@@ -29,10 +29,7 @@
 body{background:var(--bg);color:var(--text);min-height:100vh}
 img,video{max-width:100%;display:block}
 button{cursor:pointer;font-family:inherit}
-::-webkit-scrollbar{width:8px;height:8px}
-::-webkit-scrollbar-track{background:var(--surface)}
-::-webkit-scrollbar-thumb{background:#333;border-radius:4px}
-::-webkit-scrollbar-thumb:hover{background:var(--red)}
+::-webkit-scrollbar{width:8px;height:8px}::-webkit-scrollbar-track{background:var(--surface)}::-webkit-scrollbar-thumb{background:#333;border-radius:4px}::-webkit-scrollbar-thumb:hover{background:var(--red)}
 .hidden{display:none !important}
 .wrap{max-width:1280px;margin:0 auto;padding:0 16px}
 header{position:sticky;top:0;z-index:40;background:rgba(10,10,10,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
@@ -45,7 +42,6 @@ header{position:sticky;top:0;z-index:40;background:rgba(10,10,10,.92);backdrop-f
 .dot{width:8px;height:8px;border-radius:50%;background:#34d399;animation:pulse 2s infinite}
 @keyframes pulse{50%{opacity:.4}}
 .pill-btn{display:flex;align-items:center;gap:8px;padding:0 16px;height:36px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid var(--border);color:#fff;font-size:13px;font-weight:500}
-.pill-btn:hover{background:rgba(255,255,255,.15)}
 .status-live{display:flex;align-items:center;gap:8px;margin-left:8px;padding-left:16px;border-left:1px solid var(--border);font-size:11px;color:var(--dim);letter-spacing:.1em;font-weight:500}
 main{padding:24px 0 40px}
 .hero{position:relative;overflow:hidden;border-radius:20px;background:var(--surface);border:1px solid var(--border);padding:24px}
@@ -58,16 +54,12 @@ h1{font-size:28px;font-weight:900;letter-spacing:-.04em;line-height:1;margin-bot
 h1 span{color:var(--dim)}
 .hero-desc{font-size:14px;line-height:1.55;color:var(--dim);max-width:540px;margin-bottom:20px}
 .hero-desc code{background:rgba(255,255,255,.1);padding:2px 6px;border-radius:4px;color:#fff;font-size:12px}
-.hero-desc b{color:#fff}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
 .chip{padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--border);font-size:11px;color:var(--dim)}
 .hero-actions{display:flex;flex-direction:column;gap:12px}
 @media(min-width:640px){.hero-actions{flex-direction:row}}
-.btn-main{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;border-radius:12px;background:var(--red);border:none;color:#fff;font-weight:700;font-size:14px;box-shadow:0 8px 24px rgba(229,9,20,.35);transition:.15s}
-.btn-main:hover{background:var(--red-bright)}
-.btn-main:active{background:var(--red-dark)}
+.btn-main{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;border-radius:12px;background:var(--red);border:none;color:#fff;font-weight:700;font-size:14px;box-shadow:0 8px 24px rgba(229,9,20,.35)}
 .btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:0 16px;height:48px;border-radius:12px;background:rgba(255,255,255,.1);border:1px solid var(--border);color:#fff;font-weight:600;font-size:13px}
-.btn-secondary:hover{background:rgba(255,255,255,.15)}
 .hero-side{display:flex;flex-direction:column;gap:12px}
 @media(min-width:1024px){.hero-side{width:380px;flex-shrink:0}}
 .console{border-radius:12px;background:#000;border:1px solid var(--border);overflow:hidden}
@@ -90,7 +82,6 @@ h1 span{color:var(--dim)}
 @media(min-width:640px){.toolbar{flex-direction:row;align-items:center;justify-content:space-between}}
 .search{position:relative;max-width:360px;width:100%}
 .search input{width:100%;height:40px;padding:0 14px 0 38px;border-radius:999px;background:var(--surface2);border:1px solid var(--border);color:#fff;font-size:14px}
-.search input:focus{outline:none;border-color:rgba(229,9,20,.5)}
 .search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);opacity:.4;pointer-events:none}
 .filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .filter-btn{height:36px;padding:0 16px;border-radius:999px;font-size:13px;font-weight:600;border:1px solid var(--border);background:rgba(255,255,255,.05);color:var(--dim)}
@@ -117,52 +108,36 @@ h1 span{color:var(--dim)}
 .card-foot{height:34px;display:flex;align-items:center;justify-content:space-between;padding:0 10px;background:#1a1a1a;border-top:1px solid var(--border2);font-size:11px;color:var(--dim)}
 .watched-check{width:22px;height:22px;border-radius:50%;background:#10b981;display:flex;align-items:center;justify-content:center;position:absolute;top:10px;right:10px;z-index:2;font-size:12px}
 .empty{grid-column:1/-1;padding:60px 20px;text-align:center;border:1px dashed var(--border);border-radius:16px;background:rgba(255,255,255,.02)}
-.empty p{color:var(--dim);margin-top:8px;font-size:13px}
 .back-btn{display:inline-flex;align-items:center;gap:6px;padding:0 14px;height:36px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid var(--border);color:#fff;font-size:13px;font-weight:500;margin-bottom:16px}
 .ep-row{display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,.04);margin-bottom:8px}
-.ep-row.watched{background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.2)}
 .ep-thumb{width:96px;height:54px;border-radius:8px;background:#000;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:monospace;font-size:11px;font-weight:700;color:var(--dim);overflow:hidden;position:relative}
 .ep-thumb img{width:100%;height:100%;object-fit:cover}
 .ep-info{flex:1;min-width:0}
 .ep-info .file{font-size:12px;color:var(--dim2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
 .ep-play{width:36px;height:36px;border-radius:50%;background:#fff;color:#000;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:none}
-.ep-play:hover{background:var(--red);color:#fff}
 .cc-badge{font-size:9px;padding:1px 5px;border-radius:4px;background:rgba(255,255,255,.15);color:var(--dim);font-weight:700;margin-left:6px}
-.player{position:fixed;inset:0;z-index:100;background:#000;overflow:hidden;-webkit-user-select:none;user-select:none}
+
+/* PLAYER PRO - estilo app profissional */
+.player{position:fixed;inset:0;z-index:100;background:#000;overflow:hidden;user-select:none;display:flex;align-items:center;justify-content:center}
 .player video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
-.gesture-layer{position:absolute;inset:0;display:flex;z-index:2}
-.gz{flex:1}
-.gz.mid{flex:1.4}
-.sub-overlay{position:absolute;left:50%;bottom:18%;transform:translateX(-50%);max-width:88%;text-align:center;pointer-events:none;z-index:3}
-.sub-overlay p{color:#fff;font-weight:700;font-size:17px;line-height:1.3;text-shadow:2px 2px 0 #000,-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,0 0 14px rgba(0,0,0,.9)}
-.p-top{position:absolute;top:0;left:0;right:0;height:84px;background:linear-gradient(to bottom,rgba(0,0,0,.85),transparent);z-index:4;display:flex;align-items:center;justify-content:space-between;padding:0 16px;transition:opacity .25s}
-.p-top-left{display:flex;align-items:center;gap:12px;min-width:0}
-.icon-btn{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.12);border:none;color:#fff;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);flex-shrink:0}
-.icon-btn:hover{background:rgba(255,255,255,.2)}
-.icon-btn.on{background:var(--red)}
-.p-title{font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.p-sub{font-size:11px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.p-top-right{display:flex;gap:8px;flex-shrink:0}
-.cc-toggle{height:38px;padding:0 14px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.05em;border:1px solid var(--border);background:rgba(255,255,255,.12);color:#fff;backdrop-filter:blur(6px)}
-.cc-toggle.on{background:#fff;color:#000}
-.p-center-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:3;pointer-events:none;transition:opacity .2s}
-.p-center-play .circ{width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,.12);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:28px;color:#fff;backdrop-filter:blur(6px)}
-.p-bottom{position:absolute;left:0;right:0;bottom:0;padding:12px 16px;background:linear-gradient(to top,rgba(0,0,0,.92),rgba(0,0,0,.5) 60%,transparent);z-index:4;transition:opacity .25s}
-.seek{width:100%;height:4px;border-radius:999px;background:rgba(255,255,255,.2);-webkit-appearance:none;appearance:none}
-.seek::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:var(--red)}
-.p-time{display:flex;justify-content:space-between;margin-top:8px;font-size:11px;color:var(--dim);font-family:monospace}
-.hint{font-size:10px;color:var(--dim3)}
-.next-card{position:absolute;bottom:20%;right:16px;z-index:6;width:250px;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px;box-shadow:0 12px 40px rgba(0,0,0,.6)}
-.next-card .lbl{font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--dim)}
-.next-card .row{display:flex;gap:8px;margin-top:8px}
-.next-card .thumb{width:60px;height:34px;border-radius:6px;background:#000;overflow:hidden;flex-shrink:0}
-.next-card .thumb img{width:100%;height:100%;object-fit:cover}
-.next-card .info{min-width:0}
-.next-card .info b{font-size:12px;display:block;line-height:1.2}
-.next-card .btns{display:flex;gap:8px;margin-top:10px}
-.next-card button{flex:1;height:32px;border-radius:8px;font-size:11px;font-weight:700;border:none}
-.next-card .cancel{background:rgba(255,255,255,.1);color:#fff}
-.next-card .play{background:var(--red);color:#fff}
+.p-top{position:absolute;top:0;left:0;right:0;height:56px;background:linear-gradient(to bottom,rgba(0,0,0,.9),transparent);z-index:5;display:flex;align-items:center;justify-content:space-between;padding:0 16px}
+.p-top .title{font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:60%}
+.p-center{position:absolute;inset:0;z-index:4;display:flex;align-items:center;justify-content:center;gap:48px}
+.p-center .ctrl{width:64px;height:64px;border-radius:50%;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:18px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px)}
+.p-center .ctrl.play{width:72px;height:72px;font-size:28px;background:rgba(255,255,255,.12)}
+.p-bottom{position:absolute;left:0;right:0;bottom:0;z-index:5;background:linear-gradient(to top,rgba(0,0,0,.95),rgba(0,0,0,.6) 60%,transparent);padding:10px 16px 14px}
+.p-progress{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.p-progress .time{font-size:11px;font-family:monospace;color:rgba(255,255,255,.7);min-width:45px}
+.p-progress .time:last-child{text-align:right}
+.seek{flex:1;height:4px;border-radius:999px;background:rgba(255,255,255,.25);-webkit-appearance:none;appearance:none}
+.seek::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px var(--red)}
+.p-controls{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.p-controls button{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:#fff;font-size:12px;font-weight:600}
+.p-controls button.active{background:#fff;color:#000}
+.sub-overlay{position:absolute;left:50%;bottom:22%;transform:translateX(-50%);max-width:86%;text-align:center;pointer-events:none;z-index:4}
+.sub-overlay p{color:#fff;font-weight:700;font-size:18px;line-height:1.35;text-shadow:2px 2px 0 #000,-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,0 0 12px rgba(0,0,0,.9)}
+.locked .p-top,.locked .p-bottom,.locked .p-center{opacity:0;pointer-events:none}
+
 .dub-sheet{position:absolute;left:0;right:0;bottom:0;z-index:7;transform:translateY(100%);transition:transform .3s;display:flex;justify-content:center;padding:12px}
 .dub-sheet.open{transform:translateY(0)}
 .dub-card{width:100%;max-width:480px;background:rgba(20,20,20,.97);backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:18px;padding:18px}
@@ -184,6 +159,7 @@ h1 span{color:var(--dim)}
 .dub-action.start{background:#fff;color:#000}
 .dub-action.stop{background:var(--red);color:#fff}
 .dub-note{font-size:10px;color:var(--dim3);text-align:center;margin-top:10px;line-height:1.4}
+.icon-btn{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.12);border:none;color:#fff;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);flex-shrink:0}
 footer{margin-top:40px;padding:24px 0;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:8px;font-size:11px;color:var(--dim3)}
 @media(min-width:640px){footer{flex-direction:row;justify-content:space-between}}
 </style>
@@ -194,95 +170,29 @@ footer{margin-top:40px;padding:24px 0;border-top:1px solid var(--border);display
 <link rel="apple-touch-icon" href="icon-512.png">
 </head>
 <body>
-<header>
-  <div class="wrap header-inner">
-    <div class="logo-box">
-      <div class="logo-mark">O</div>
-      <div>
-        <div style="display:flex;align-items:baseline">
-          <span class="logo-title">OFFLINEFLIX</span>
-          <span class="logo-v">v4</span>
-        </div>
-        <div class="logo-sub"><span class="dot"></span> DUBLAGEM POR VOZ • SEM IA PESADA</div>
-      </div>
-    </div>
-    <div style="display:flex;align-items:center">
-      <button class="pill-btn" id="btnHelp">📽️ Projetor A12</button>
-      <div class="status-live"><span class="dot"></span> OFFLINE • file:// READY</div>
-    </div>
-  </div>
-</header>
+<header><div class="wrap header-inner"><div class="logo-box"><div class="logo-mark">O</div><div><div style="display:flex;align-items:baseline"><span class="logo-title">OFFLINEFLIX</span><span class="logo-v">v5 PRO</span></div><div class="logo-sub"><span class="dot"></span> PLAYER PROFISSIONAL • PROJETOR READY</div></div></div><div style="display:flex;align-items:center"><button class="pill-btn" id="btnHelp">📽️ Projetor A12</button><div class="status-live"><span class="dot"></span> OFFLINE • PRO</div></div></div></header>
 <main class="wrap">
-  <section class="hero">
-    <div class="hero-flex">
-      <div style="flex:1">
-        <div class="badge"><span class="bdot"></span> PARSER INTELIGENTE ATIVO</div>
-        <h1>Transforme seu pendrive<br><span>em Netflix offline.</span></h1>
-        <p class="hero-desc">Detecta <code>origem 4x8.mp4</code>, <code>S01E02</code> e "Temporada 1 Ep 2", agrupa séries, ordena episódios, avança pro próximo automaticamente. Se achar uma legenda <code>.srt</code>, dubla com a voz do próprio sistema — sem baixar nenhum modelo de IA.</p>
-        <div class="chips" id="chips"></div>
-        <div class="hero-actions">
-          <button class="btn-main" id="btnPick">📁 SELECIONAR PASTA DO CELULAR / PENDRIVE</button>
-          <button class="btn-secondary" id="btnJson">⬇ filmes.json</button>
-        </div>
-        <input type="file" id="folderInput" multiple webkitdirectory directory class="hidden" accept="video/*,.srt,.vtt">
-      </div>
-      <div class="hero-side">
-        <div class="console">
-          <div class="console-head">
-            <div style="display:flex;align-items:center">
-              <div class="dots"><span></span><span></span><span></span></div>
-              <span class="console-label">parser.log — live</span>
-            </div>
-          </div>
-          <div class="console-body" id="logBox"></div>
-        </div>
-        <div class="stat-grid">
-          <div class="stat-box"><div class="stat-label">FILMES</div><div class="stat-num" id="statMovies">0</div></div>
-          <div class="stat-box"><div class="stat-label">SÉRIES</div><div class="stat-num red" id="statSeries">0</div></div>
-          <div class="stat-box accent"><div class="stat-label">EPISÓDIOS</div><div class="stat-num" id="statEps">0</div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="toolbar">
-    <div class="search">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-      <input id="searchInput" placeholder="Buscar filme ou série...">
-    </div>
-    <div class="filters" id="filterTabs">
-      <button class="filter-btn active" data-f="all">Tudo</button>
-      <button class="filter-btn" data-f="movies">Filmes</button>
-      <button class="filter-btn" data-f="series">Séries</button>
-    </div>
-  </section>
+  <section class="hero"><div class="hero-flex"><div style="flex:1"><div class="badge"><span class="bdot"></span> PLAYER PRO ATIVO</div><h1>Player igual Netflix<br><span>com velocidade e trava.</span></h1><p class="hero-desc">Agora com pause central, -10s/+10s, barra de progresso, <code>velocidade</code>, <code>travar tela</code> e <code>Áudio & Legendas</code>. No projetor vira automático pra paisagem.</p><div class="chips" id="chips"></div><div class="hero-actions"><button class="btn-main" id="btnPick">📁 SELECIONAR PASTA</button><button class="btn-secondary" id="btnJson">⬇ filmes.json</button></div><input type="file" id="folderInput" multiple webkitdirectory directory class="hidden" accept="video/*,.srt,.vtt"></div><div class="hero-side"><div class="console"><div class="console-head"><div style="display:flex;align-items:center"><div class="dots"><span></span><span></span><span></span></div><span class="console-label">parser.log — live</span></div></div><div class="console-body" id="logBox"></div></div><div class="stat-grid"><div class="stat-box"><div class="stat-label">FILMES</div><div class="stat-num" id="statMovies">0</div></div><div class="stat-box"><div class="stat-label">SÉRIES</div><div class="stat-num red" id="statSeries">0</div></div><div class="stat-box accent"><div class="stat-label">EPISÓDIOS</div><div class="stat-num" id="statEps">0</div></div></div></div></div></section>
+  <section class="toolbar"><div class="search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input id="searchInput" placeholder="Buscar..."></div><div class="filters" id="filterTabs"><button class="filter-btn active" data-f="all">Tudo</button><button class="filter-btn" data-f="movies">Filmes</button><button class="filter-btn" data-f="series">Séries</button></div></section>
   <div id="catalogRoot"></div>
-  <footer>
-    <div>OFFLINEFLIX v4 • Pendrive • file:// • Dublagem por voz do sistema (SpeechSynthesis) • 100% offline</div>
-    <div>Parser: S01E02 • 4x8 • Temporada N Ep M</div>
-  </footer>
+  <footer><div>OFFLINEFLIX v5 PRO • Player com Velocidade, Trava e Áudio & Legendas • Projetor A12</div><div>Auto paisagem • file://</div></footer>
 </main>
 <div id="playerRoot"></div>
 <div id="helpRoot"></div>
 <script>
 
-const state = {
-  all: [], seriesList: [], fileMap: new Map(), watched: new Set(), query: "", filter: "all", thumbCache: new Map(),
-};
+const state = { all: [], seriesList: [], fileMap: new Map(), watched: new Set(), query: "", filter: "all", thumbCache: new Map(), };
 const log = (msg) => {
   const box = document.getElementById('logBox');
+  if(!box) return;
   const cls = msg.startsWith('✓') || msg.startsWith('>') ? 'log-ok' : msg.startsWith('⚠') ? 'log-warn' : 'log-dim';
-  const div = document.createElement('div');
-  div.className = cls; div.textContent = msg;
+  const div = document.createElement('div'); div.className = cls; div.textContent = msg;
   box.appendChild(div); box.scrollTop = box.scrollHeight;
 };
-log('OFFLINEFLIX v4 iniciado.');
-log('Selecione a pasta com seus filmes/séries.');
+log('OFFLINEFLIX v5 PRO iniciado.');
 const VIDEO_EXTS = ['.mp4','.mkv','.avi','.mov','.wmv','.flv','.webm','.m4v','.mpg','.mpeg'];
 const isVideo = (name) => VIDEO_EXTS.some(ext => name.toLowerCase().endsWith(ext));
-function cleanTitle(str){
-  return str.replace(/[._-]+/g,' ').replace(/\s+/g,' ').trim()
-    .replace(/\b1080p\b|\b720p\b|\b2160p\b|\b4k\b|\bHEVC\b|\bx264\b|\bx265\b|\bBluRay\b|\bWEB-?DL\b|\bWEBRip\b|\bHDR\b|\bDublado\b|\bLegendado\b/gi,'').trim();
-}
+function cleanTitle(str){ return str.replace(/[._-]+/g,' ').replace(/\s+/g,' ').trim().replace(/\b1080p\b|\b720p\b|\b2160p\b|\b4k\b|\bHEVC\b|\bx264\b|\bx265\b|\bBluRay\b|\bWEB-?DL\b|\bWEBRip\b|\bHDR\b|\bDublado\b|\bLegendado\b/gi,'').trim(); }
 function parseFile(name){
   const n = name.replace(/\.[^/.]+$/,'');
   const nameFirst = [
@@ -295,483 +205,209 @@ function parseFile(name){
     { re:/^(\d{1,2})x(\d{1,3})[\s._-]+(.+)$/i, h:(m)=>({season:+m[1],episode:+m[2],series:m[3]}) },
     { re:/^[Ss](\d{1,2})[\s._-]*[Ee](\d{1,3})[\s._-]+(.+)$/, h:(m)=>({season:+m[1],episode:+m[2],series:m[3]}) },
   ];
-  for (const p of nameFirst) {
-    const m = n.match(p.re);
-    if (m) {
-      const d = p.h(m);
-      const series = cleanTitle(d.series || '') || 'Série';
-      if (series) return { isSeries:true, seriesName:series, key:series.toLowerCase(), season:d.season, episode:d.episode, epTitle: d.epTitle ? cleanTitle(d.epTitle) : '' };
-    }
-  }
-  for (const p of numberFirst) {
-    const m = n.match(p.re);
-    if (m) {
-      const d = p.h(m);
-      const series = cleanTitle(d.series || '') || 'Série';
-      return { isSeries:true, seriesName:series, key:series.toLowerCase(), season:d.season, episode:d.episode, epTitle:'' };
-    }
-  }
+  for (const p of nameFirst) { const m = n.match(p.re); if (m) { const d = p.h(m); const series = cleanTitle(d.series || '') || 'Série'; if (series) return { isSeries:true, seriesName:series, key:series.toLowerCase(), season:d.season, episode:d.episode, epTitle: d.epTitle ? cleanTitle(d.epTitle) : '' }; } }
+  for (const p of numberFirst) { const m = n.match(p.re); if (m) { const d = p.h(m); const series = cleanTitle(d.series || '') || 'Série'; return { isSeries:true, seriesName:series, key:series.toLowerCase(), season:d.season, episode:d.episode, epTitle:'' }; } }
   return { isSeries:false, title: cleanTitle(n) || 'Sem Título' };
 }
 function epLabel(s,e){ return `T${String(s).padStart(2,'0')} • E${String(e).padStart(2,'0')}`; }
-function fmtSize(b){
-  if (!b) return '—';
-  if (b<1024) return b+' B';
-  if (b<1048576) return (b/1024).toFixed(1)+' KB';
-  if (b<1073741824) return (b/1048576).toFixed(1)+' MB';
-  return (b/1073741824).toFixed(2)+' GB';
-}
-function fmtTime(s){
-  if (!isFinite(s) || s<0) s=0;
-  return new Date(s*1000).toISOString().slice(11,19);
-}
-function findSubtitle(fullPath){
-  const base = fullPath.replace(/\.[^/.]+$/,'').toLowerCase();
-  for (const [key,file] of state.fileMap){
-    const kBase = key.replace(/\.[^/.]+$/,'').toLowerCase();
-    if (kBase===base && /\.(srt|vtt)$/i.test(key)) return file;
-  }
-  return null;
-}
-function srtTimeToSec(t){
-  const m = t.match(/(\d+):(\d+):(\d+)[.,](\d+)/);
-  if (!m) return 0;
-  return (+m[1])*3600 + (+m[2])*60 + (+m[3]) + (+m[4])/1000;
-}
-function parseSubtitle(text){
-  const cues = [];
-  text.replace(/\r/g,'').trim().split(/\n\n+/).forEach((block,i)=>{
-    const lines = block.split('\n');
-    if (lines.length<2) return;
-    let idx = /^\d+$/.test(lines[0].trim()) ? 1 : 0;
-    const timeLine = lines[idx];
-    if (!timeLine || !timeLine.includes('-->')) return;
-    const [a,c] = timeLine.split('-->');
-    const start = srtTimeToSec(a.trim()), end = srtTimeToSec(c.trim());
-    const txt = lines.slice(idx+1).join(' ').replace(/<[^>]+>/g,'').trim();
-    if (txt) cues.push({ id:i, start, end, text: txt });
-  });
-  return cues;
-}
-async function getThumbnail(fullPath, file){
-  if (state.thumbCache.has(fullPath)) return state.thumbCache.get(fullPath);
-  if (!file) return null;
-  try {
-    const url = URL.createObjectURL(file);
-    const dataUrl = await new Promise((resolve)=>{
-      const v = document.createElement('video');
-      v.muted = true; v.src = url; v.preload = 'metadata';
-      const timeout = setTimeout(()=>resolve(null), 6000);
-      v.addEventListener('loadeddata', ()=>{ v.currentTime = Math.min(15, (v.duration||3)*0.12 || 1.5); });
-      v.addEventListener('seeked', ()=>{
-        try{
-          const c = document.createElement('canvas');
-          c.width = 320; c.height = Math.round(320*(v.videoHeight/v.videoWidth || 1.5));
-          c.getContext('2d').drawImage(v,0,0,c.width,c.height);
-          clearTimeout(timeout); resolve(c.toDataURL('image/jpeg',0.72));
-        } catch(e){ clearTimeout(timeout); resolve(null); }
-      });
-      v.addEventListener('error', ()=>{ clearTimeout(timeout); resolve(null); });
-    });
-    URL.revokeObjectURL(url);
-    state.thumbCache.set(fullPath, dataUrl);
-    return dataUrl;
-  } catch(e){ return null; }
-}
-document.getElementById('btnPick').addEventListener('click', ()=>{
-  log('> Abrindo seletor de pasta...');
-  document.getElementById('folderInput').click();
-});
+function fmtSize(b){ if (!b) return '—'; if (b<1024) return b+' B'; if (b<1048576) return (b/1024).toFixed(1)+' KB'; if (b<1073741824) return (b/1048576).toFixed(1)+' MB'; return (b/1073741824).toFixed(2)+' GB'; }
+function fmtTime(s){ if (!isFinite(s) || s<0) s=0; const h=Math.floor(s/3600), m=Math.floor(s%3600/60), sec=Math.floor(s%60); if(h>0) return `${h}:${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`; return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`; }
+function findSubtitle(fullPath){ const base = fullPath.replace(/\.[^/.]+$/,'').toLowerCase(); for (const [key,file] of state.fileMap){ const kBase = key.replace(/\.[^/.]+$/,'').toLowerCase(); if (kBase===base && /\.(srt|vtt)$/i.test(key)) return file; } return null; }
+function srtTimeToSec(t){ const m = t.match(/(\d+):(\d+):(\d+)[.,](\d+)/); if (!m) return 0; return (+m[1])*3600 + (+m[2])*60 + (+m[3]) + (+m[4])/1000; }
+function parseSubtitle(text){ const cues = []; text.replace(/\r/g,'').trim().split(/\n\n+/).forEach((block,i)=>{ const lines = block.split('\n'); if (lines.length<2) return; let idx = /^\d+$/.test(lines[0].trim()) ? 1 : 0; const timeLine = lines[idx]; if (!timeLine || !timeLine.includes('-->')) return; const [a,c] = timeLine.split('-->'); const start = srtTimeToSec(a.trim()), end = srtTimeToSec(c.trim()); const txt = lines.slice(idx+1).join(' ').replace(/<[^>]+>/g,'').trim(); if (txt) cues.push({ id:i, start, end, text: txt }); }); return cues; }
+async function getThumbnail(fullPath, file){ if (state.thumbCache.has(fullPath)) return state.thumbCache.get(fullPath); if (!file) return null; try { const url = URL.createObjectURL(file); const dataUrl = await new Promise((resolve)=>{ const v = document.createElement('video'); v.muted = true; v.src = url; v.preload = 'metadata'; const timeout = setTimeout(()=>resolve(null), 6000); v.addEventListener('loadeddata', ()=>{ v.currentTime = Math.min(15, (v.duration||3)*0.12 || 1.5); }); v.addEventListener('seeked', ()=>{ try{ const c = document.createElement('canvas'); c.width = 320; c.height = Math.round(320*(v.videoHeight/v.videoWidth || 1.5)); c.getContext('2d').drawImage(v,0,0,c.width,c.height); clearTimeout(timeout); resolve(c.toDataURL('image/jpeg',0.72)); } catch(e){ clearTimeout(timeout); resolve(null); } }); v.addEventListener('error', ()=>{ clearTimeout(timeout); resolve(null); }); }); URL.revokeObjectURL(url); state.thumbCache.set(fullPath, dataUrl); return dataUrl; } catch(e){ return null; } }
+
+document.getElementById('btnPick').addEventListener('click', ()=>{ log('> Abrindo seletor de pasta...'); document.getElementById('folderInput').click(); });
 document.getElementById('folderInput').addEventListener('change', async (e)=>{
   const files = Array.from(e.target.files || []);
   if (!files.length) return;
   state.fileMap.clear();
-  log(`> Encontrados ${files.length} arquivos no total...`);
+  log(`> ${files.length} arquivos...`);
   await new Promise(r=>setTimeout(r,80));
-  files.forEach(f=>{
-    const rel = f.webkitRelativePath || f.name;
-    state.fileMap.set(rel, f); state.fileMap.set(f.name, f);
-  });
+  files.forEach(f=>{ const rel = f.webkitRelativePath || f.name; state.fileMap.set(rel, f); state.fileMap.set(f.name, f); });
   const videos = files.filter(f=>isVideo(f.name));
-  const subs = files.filter(f=>/\.(srt|vtt)$/i.test(f.name));
-  log(`> ${videos.length} vídeos e ${subs.length} legendas encontradas`);
-  if (!videos.length){ log('⚠ Nenhum vídeo encontrado.'); return; }
-  log('> Agrupando séries e ordenando episódios...');
+  log(`> ${videos.length} vídeos encontrados`);
+  if (!videos.length){ log('⚠ Nenhum vídeo'); return; }
   const flat = []; const seriesMap = {};
   videos.forEach(f=>{
     const rel = f.webkitRelativePath || f.name;
     const info = parseFile(f.name);
     const sub = findSubtitle(rel);
-    if (info.isSeries){
-      const item = { type:'episode', id:rel, fullPath:rel, file:f.name, seriesName:info.seriesName, seriesKey:info.key,
-        season:info.season, episode:info.episode, epTitle:info.epTitle, size:f.size, hasSub: !!sub };
-      flat.push(item);
-      if (!seriesMap[info.key]) seriesMap[info.key] = { name: info.seriesName, episodes: [] };
-      seriesMap[info.key].episodes.push(item);
-    } else {
-      flat.push({ type:'movie', id:rel, fullPath:rel, file:f.name, title:info.title, size:f.size, hasSub: !!sub });
-    }
+    if (info.isSeries){ const item = { type:'episode', id:rel, fullPath:rel, file:f.name, seriesName:info.seriesName, seriesKey:info.key, season:info.season, episode:info.episode, epTitle:info.epTitle, size:f.size, hasSub: !!sub }; flat.push(item); if (!seriesMap[info.key]) seriesMap[info.key] = { name: info.seriesName, episodes: [] }; seriesMap[info.key].episodes.push(item); }
+    else { flat.push({ type:'movie', id:rel, fullPath:rel, file:f.name, title:info.title, size:f.size, hasSub: !!sub }); }
   });
   Object.values(seriesMap).forEach(s=>s.episodes.sort((a,b)=>(a.season-b.season)||(a.episode-b.episode)));
-  state.all = flat;
-  state.seriesList = Object.values(seriesMap).sort((a,b)=>a.name.localeCompare(b.name));
-  log(`✓ Catálogo pronto: ${flat.filter(x=>x.type==='movie').length} filmes, ${state.seriesList.length} séries.`);
+  state.all = flat; state.seriesList = Object.values(seriesMap).sort((a,b)=>a.name.localeCompare(b.name));
+  log(`✓ Pronto: ${flat.filter(x=>x.type==='movie').length} filmes, ${state.seriesList.length} séries.`);
   render();
 });
 document.getElementById('searchInput').addEventListener('input', e=>{ state.query = e.target.value.toLowerCase(); renderCatalog(); });
-document.getElementById('filterTabs').addEventListener('click', e=>{
-  const btn = e.target.closest('.filter-btn'); if (!btn) return;
-  state.filter = btn.dataset.f;
-  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  renderCatalog();
-});
+document.getElementById('filterTabs').addEventListener('click', e=>{ const btn = e.target.closest('.filter-btn'); if (!btn) return; state.filter = btn.dataset.f; document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); renderCatalog(); });
 function render(){
-  const movies = state.all.filter(x=>x.type==='movie');
-  const epCount = state.all.filter(x=>x.type==='episode').length;
-  document.getElementById('statMovies').textContent = movies.length;
+  document.getElementById('statMovies').textContent = state.all.filter(x=>x.type==='movie').length;
   document.getElementById('statSeries').textContent = state.seriesList.length;
-  document.getElementById('statEps').textContent = epCount;
-  document.getElementById('chips').innerHTML = ['S01E02 • 4x8 • Temporada N','Legenda .srt = CC + dublagem','Próximo episódio automático','Capa real (frame do vídeo)']
-    .map(t=>`<span class="chip">${t}</span>`).join('');
+  document.getElementById('statEps').textContent = state.all.filter(x=>x.type==='episode').length;
+  document.getElementById('chips').innerHTML = ['S01E02 • 4x8','Legenda .srt = CC + dublagem','Player PRO com velocidade','Auto paisagem no projetor'].map(t=>`<span class="chip">${t}</span>`).join('');
   renderCatalog();
 }
 function renderCatalog(){
-  const root = document.getElementById('catalogRoot');
-  const q = state.query;
+  const root = document.getElementById('catalogRoot'); const q = state.query;
   let movies = state.all.filter(x=>x.type==='movie' && (!q || x.title.toLowerCase().includes(q)));
   let series = state.seriesList.filter(s=>!q || s.name.toLowerCase().includes(q));
-  if (state.filter==='movies') series = [];
-  if (state.filter==='series') movies = [];
+  if (state.filter==='movies') series = []; if (state.filter==='series') movies = [];
   movies.sort((a,b)=>a.title.localeCompare(b.title));
-  if (!movies.length && !series.length){
-    root.innerHTML = `<div class="empty">🎬<p>Nenhum resultado para "${q||''}"</p></div>`;
-    return;
-  }
+  if (!movies.length && !series.length){ root.innerHTML = `<div class="empty">🎬<p>Nenhum resultado</p></div>`; return; }
   let html = '';
-  if (series.length){
-    html += `<div class="sec-title"><h2>SÉRIES</h2><div class="line"></div><span class="count">${series.length}</span></div>`;
-    html += `<div class="grid">` + series.map(s=>`
-      <button class="card" data-series="${s.name.replace(/"/g,'&quot;')}">
-        <div class="card-thumb" data-thumb-for="${s.episodes[0].fullPath}">
-          <div class="card-top"><span class="tag red">${s.episodes.length} EP</span></div>
-          <div class="card-bottom"><h3>${s.name}</h3><p>${epLabel(s.episodes[0].season,s.episodes[0].episode)} → ${epLabel(s.episodes[s.episodes.length-1].season,s.episodes[s.episodes.length-1].episode)}</p></div>
-        </div>
-        <div class="card-foot"><span>Série agrupada</span><span>VER →</span></div>
-      </button>`).join('') + `</div>`;
-  }
-  if (movies.length){
-    html += `<div class="sec-title"><h2>FILMES</h2><div class="line"></div><span class="count">${movies.length}</span></div>`;
-    html += `<div class="grid">` + movies.map(m=>`
-      <div class="card">
-        <button class="card-thumb" data-play-movie="${m.id.replace(/"/g,'&quot;')}" data-thumb-for="${m.fullPath}">
-          <div class="card-top"><span class="tag">FILME</span>${m.hasSub?'<span class="tag" style="margin-left:4px">CC</span>':''}</div>
-          ${state.watched.has(m.fullPath)?'<div class="watched-check">✓</div>':''}
-          <div class="card-bottom"><h3>${m.title}</h3><p>${m.file}</p></div>
-        </button>
-        <div class="card-foot"><span>${fmtSize(m.size)}</span><span>${state.watched.has(m.fullPath)?'VISTO':''}</span></div>
-      </div>`).join('') + `</div>`;
-  }
+  if (series.length){ html += `<div class="sec-title"><h2>SÉRIES</h2><div class="line"></div><span class="count">${series.length}</span></div><div class="grid">` + series.map(s=>`<button class="card" data-series="${s.name.replace(/"/g,'&quot;')}"><div class="card-thumb" data-thumb-for="${s.episodes[0].fullPath}"><div class="card-top"><span class="tag red">${s.episodes.length} EP</span></div><div class="card-bottom"><h3>${s.name}</h3><p>${epLabel(s.episodes[0].season,s.episodes[0].episode)} → ${epLabel(s.episodes[s.episodes.length-1].season,s.episodes[s.episodes.length-1].episode)}</p></div></div><div class="card-foot"><span>Série</span><span>VER →</span></div></button>`).join('') + `</div>`; }
+  if (movies.length){ html += `<div class="sec-title"><h2>FILMES</h2><div class="line"></div><span class="count">${movies.length}</span></div><div class="grid">` + movies.map(m=>`<div class="card"><button class="card-thumb" data-play-movie="${m.id.replace(/"/g,'&quot;')}" data-thumb-for="${m.fullPath}"><div class="card-top"><span class="tag">FILME</span>${m.hasSub?'<span class="tag" style="margin-left:4px">CC</span>':''}</div>${state.watched.has(m.fullPath)?'<div class="watched-check">✓</div>':''}<div class="card-bottom"><h3>${m.title}</h3><p>${m.file}</p></div></button><div class="card-foot"><span>${fmtSize(m.size)}</span><span>${state.watched.has(m.fullPath)?'VISTO':''}</span></div></div>`).join('') + `</div>`; }
   root.innerHTML = html;
   root.querySelectorAll('[data-series]').forEach(el=>el.addEventListener('click', ()=>openSeries(el.dataset.series)));
-  root.querySelectorAll('[data-play-movie]').forEach(el=>el.addEventListener('click', ()=>{
-    const m = state.all.find(x=>x.id===el.dataset.playMovie);
-    if (m) openPlayer([m], 0);
-  }));
-  root.querySelectorAll('[data-thumb-for]').forEach(async el=>{
-    const path = el.dataset.thumbFor; const file = state.fileMap.get(path);
-    const url = await getThumbnail(path, file);
-    if (url) el.insertAdjacentHTML('afterbegin', `<img src="${url}">`);
-  });
+  root.querySelectorAll('[data-play-movie]').forEach(el=>el.addEventListener('click', ()=>{ const m = state.all.find(x=>x.id===el.dataset.playMovie); if (m) openPlayer([m], 0); }));
+  root.querySelectorAll('[data-thumb-for]').forEach(async el=>{ const path = el.dataset.thumbFor; const file = state.fileMap.get(path); const url = await getThumbnail(path, file); if (url) el.insertAdjacentHTML('afterbegin', `<img src="${url}">`); });
 }
-function openSeries(name){
-  const s = state.seriesList.find(x=>x.name===name);
-  if (!s) return;
-  const root = document.getElementById('catalogRoot');
-  root.innerHTML = `
-    <button class="back-btn" id="btnBack">← Voltar ao catálogo</button>
-    <h2 style="font-size:20px;font-weight:800;margin-bottom:14px">${s.name} · ${s.episodes.length} episódios</h2>
-    ${s.episodes.map((ep,i)=>`
-      <div class="ep-row ${state.watched.has(ep.fullPath)?'watched':''}">
-        <div class="ep-thumb" data-thumb-for="${ep.fullPath}">${ep.season}x${ep.episode}</div>
-        <div class="ep-info">
-          <div style="font-weight:700;font-size:13px">${epLabel(ep.season,ep.episode)} ${ep.epTitle?'• '+ep.epTitle:''} ${ep.hasSub?'<span class="cc-badge">CC</span>':''} ${state.watched.has(ep.fullPath)?'· visto':''}</div>
-          <div class="file">${ep.file}</div>
-        </div>
-        <button class="ep-play" data-idx="${i}">▶</button>
-      </div>`).join('')}`;
-  document.getElementById('btnBack').addEventListener('click', renderCatalog);
-  root.querySelectorAll('[data-idx]').forEach(btn=>btn.addEventListener('click', ()=>openPlayer(s.episodes, +btn.dataset.idx)));
-  root.querySelectorAll('[data-thumb-for]').forEach(async el=>{
-    const path = el.dataset.thumbFor; const file = state.fileMap.get(path);
-    const url = await getThumbnail(path, file);
-    if (url) el.innerHTML = `<img src="${url}">`;
-  });
-}
+function openSeries(name){ const s = state.seriesList.find(x=>x.name===name); if (!s) return; const root = document.getElementById('catalogRoot'); root.innerHTML = `<button class="back-btn" id="btnBack">← Voltar</button><h2 style="font-size:20px;font-weight:800;margin-bottom:14px">${s.name} · ${s.episodes.length} eps</h2>${s.episodes.map((ep,i)=>`<div class="ep-row ${state.watched.has(ep.fullPath)?'watched':''}"><div class="ep-thumb" data-thumb-for="${ep.fullPath}">${ep.season}x${ep.episode}</div><div class="ep-info"><div style="font-weight:700;font-size:13px">${epLabel(ep.season,ep.episode)} ${ep.epTitle?'• '+ep.epTitle:''} ${ep.hasSub?'<span class="cc-badge">CC</span>':''}</div><div class="file">${ep.file}</div></div><button class="ep-play" data-idx="${i}">▶</button></div>`).join('')}`; document.getElementById('btnBack').addEventListener('click', renderCatalog); root.querySelectorAll('[data-idx]').forEach(btn=>btn.addEventListener('click', ()=>openPlayer(s.episodes, +btn.dataset.idx))); root.querySelectorAll('[data-thumb-for]').forEach(async el=>{ const path = el.dataset.thumbFor; const file = state.fileMap.get(path); const url = await getThumbnail(path, file); if (url) el.innerHTML = `<img src="${url}">`; }); }
+
+
 let P = null;
 function openPlayer(list, index){
   const item = list[index];
   const file = state.fileMap.get(item.fullPath) || state.fileMap.get(item.file);
-  if (!file){ log('⚠ Arquivo de vídeo não encontrado (selecione a pasta de novo).'); return; }
-  P = {
-    list, index, item,
-    cues: [], ccOn: true, controlsVisible: true, hideTimer: null,
-    dubOpen: false, dubOn: false, dubVoiceProfile: 'narrador', pauseWhileSpeaking: true,
-    lastCueId: -1, nextTimer: null, nextSeconds: 6,
-  };
+  if (!file){ log('⚠ Arquivo não encontrado'); return; }
+  P = { list, index, item, cues: [], ccOn: true, locked:false, playbackRates:[0.5,0.75,1,1.25,1.5,1.75,2], rateIdx:2, hideTimer:null, dubOn:false, dubVoiceProfile:'narrador', pauseWhileSpeaking:true, lastCueId:-1, nextTimer:null };
   const url = URL.createObjectURL(file);
   const root = document.getElementById('playerRoot');
-  const isSeries = item.type === 'episode';
+  const isSeries = item.type==='episode';
   root.innerHTML = `
     <div class="player" id="pStage">
       <video id="pVideo" src="${url}" autoplay playsinline></video>
-      <div class="gesture-layer">
-        <div class="gz" id="gzLeft"></div>
-        <div class="gz mid" id="gzMid"></div>
-        <div class="gz" id="gzRight"></div>
-      </div>
       <div class="sub-overlay hidden" id="subOverlay"><p id="subText"></p></div>
       <div class="p-top" id="pTop">
-        <div class="p-top-left">
+        <div style="display:flex;align-items:center;gap:12px">
           <button class="icon-btn" id="pClose">✕</button>
-          <div style="min-width:0">
-            <div class="p-title">${isSeries ? `${item.seriesName} • ${epLabel(item.season,item.episode)}` : item.title}</div>
-            <div class="p-sub">${item.epTitle || item.file}</div>
-          </div>
+          <div class="title">${isSeries ? `${item.seriesName} • ${epLabel(item.season,item.episode)}` : item.title}</div>
         </div>
-        <div class="p-top-right">
-          <button class="cc-toggle ${item.hasSub?'':'hidden'} on" id="pCc">CC</button>
-          <button class="icon-btn ${item.hasSub?'':'hidden'}" id="pDubOpen" title="Dublagem">🔊</button>
+        <div style="display:flex;gap:8px">
+          <button class="icon-btn" id="pRotate">⛶</button>
+          <button class="icon-btn" id="pCast">📡</button>
         </div>
       </div>
-      <div class="p-center-play" id="pCenterPlay"><div class="circ">▶</div></div>
+      <div class="p-center" id="pCenter">
+        <button class="ctrl" id="pRew">↺<span style="font-size:10px;display:block">10s</span></button>
+        <button class="ctrl play" id="pPlay">▶</button>
+        <button class="ctrl" id="pFwd">↻<span style="font-size:10px;display:block">10s</span></button>
+      </div>
       <div class="p-bottom" id="pBottom">
-        <input type="range" class="seek" id="pSeek" min="0" max="100" value="0">
-        <div class="p-time"><span id="pCur">0:00:00</span><span class="hint">toque centro: play/pausa • duplo toque lateral: ±10s</span><span id="pDur">0:00:00</span></div>
+        <div class="p-progress">
+          <span class="time" id="pCur">00:00</span>
+          <input type="range" class="seek" id="pSeek" min="0" max="100" value="0">
+          <span class="time" id="pDur">00:00</span>
+        </div>
+        <div class="p-controls">
+          <div style="display:flex;gap:8px">
+            <button id="pPrev">⏮ Anterior</button>
+            <button id="pSpeed">⚡ 1x</button>
+            <button id="pNext">Próximo ⏭</button>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button id="pLock">🔒 Travar</button>
+            <button id="pAudio">💬 Áudio & Legendas</button>
+            <button id="pClose2">✕ Fechar</button>
+          </div>
+        </div>
       </div>
       <div class="dub-sheet" id="dubSheet">
         <div class="dub-card">
-          <div class="dub-head"><b>DUBLAGEM • VOZ DO SISTEMA</b><button class="icon-btn" id="dubClose">✕</button></div>
+          <div class="dub-head"><b>ÁUDIO & LEGENDAS • DUBLAGEM</b><button class="icon-btn" id="dubClose">✕</button></div>
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <button class="filter-btn active" id="btnCc">CC ${item.hasSub?'ON':'OFF'}</button>
+            <button class="filter-btn" id="btnDubToggle">${P.dubOn?'🔊 Dublagem ON':'🔇 Dublagem OFF'}</button>
+          </div>
           <div class="voice-grid" id="voiceGrid">
-            ${[['narrador','🎙️','Narrador'],['homem','👨','Homem'],['mulher','👩','Mulher'],['crianca','🧒','Criança']].map(([id,ic,lb])=>
-              `<button class="voice-btn ${id==='narrador'?'active':''}" data-voice="${id}"><div class="ic">${ic}</div><div class="lb">${lb.toUpperCase()}</div></button>`).join('')}
+            ${[['narrador','🎙️','Narrador'],['homem','👨','Homem'],['mulher','👩','Mulher'],['crianca','🧒','Criança']].map(([id,ic,lb])=>`<button class="voice-btn ${id==='narrador'?'active':''}" data-voice="${id}"><div class="ic">${ic}</div><div class="lb">${lb.toUpperCase()}</div></button>`).join('')}
           </div>
           <div class="dub-row">
-            <div><div class="t1">Pausar vídeo enquanto fala</div><div class="t2">Evita sobrepor com o áudio original</div></div>
+            <div><div class="t1">Pausar vídeo enquanto fala</div><div class="t2">Evita sobrepor áudio original</div></div>
             <button class="switch on" id="pauseSwitch"><div class="knob"></div></button>
           </div>
           <button class="dub-action start" id="dubAction">▶ INICIAR DUBLAGEM</button>
-          <div class="dub-note">Usa a voz do próprio sistema Android (SpeechSynthesis). Sem download, sem modelo de IA. Sincroniza com a legenda .srt.</div>
+          <div class="dub-note">Usa voz do sistema Android. Só funciona se tiver .srt com mesmo nome do vídeo.</div>
         </div>
       </div>
     </div>`;
   const video = document.getElementById('pVideo');
-  const stage = document.getElementById('pStage');
-  if (item.hasSub) {
-    const subFile = findSubtitle(item.fullPath);
-    subFile.text().then(txt => { P.cues = parseSubtitle(txt); }).catch(()=>log('⚠ Legenda não pôde ser lida.'));
-  }
+  // AUTO PAISAGEM - tenta travar em landscape no projetor/celular
+  try{ if (video.requestFullscreen) video.requestFullscreen().catch(()=>{}); if (screen.orientation && screen.orientation.lock) screen.orientation.lock('landscape').catch(()=>{}); }catch(e){}
+  if (item.hasSub) { const subFile = findSubtitle(item.fullPath); subFile.text().then(txt => { P.cues = parseSubtitle(txt); }).catch(()=>{}); }
   video.addEventListener('loadedmetadata', ()=>{ document.getElementById('pSeek').max = video.duration || 100; document.getElementById('pDur').textContent = fmtTime(video.duration); });
-  video.addEventListener('timeupdate', ()=>{
-    document.getElementById('pSeek').value = video.currentTime;
-    document.getElementById('pCur').textContent = fmtTime(video.currentTime);
-    updateSubtitle(video.currentTime);
-    checkNextEpisode(video);
-  });
-  video.addEventListener('play', ()=>{ document.getElementById('pCenterPlay').style.opacity = '0'; showControls(); });
-  video.addEventListener('pause', ()=>{ document.getElementById('pCenterPlay').style.opacity = '1'; showControls(true); });
+  video.addEventListener('timeupdate', ()=>{ document.getElementById('pSeek').value = video.currentTime; document.getElementById('pCur').textContent = fmtTime(video.currentTime); updateSubtitle(video.currentTime); });
+  video.addEventListener('play', ()=>{ document.getElementById('pPlay').textContent = '❚❚'; showControls(); });
+  video.addEventListener('pause', ()=>{ document.getElementById('pPlay').textContent = '▶'; showControls(true); });
   video.addEventListener('ended', ()=> goNext(true));
   document.getElementById('pSeek').addEventListener('input', (e)=>{ video.currentTime = +e.target.value; });
   document.getElementById('pClose').addEventListener('click', closePlayer);
-  document.getElementById('pCc').addEventListener('click', (e)=>{ P.ccOn = !P.ccOn; e.target.classList.toggle('on', P.ccOn); if (!P.ccOn) document.getElementById('subOverlay').classList.add('hidden'); });
-  document.getElementById('pDubOpen').addEventListener('click', ()=>toggleDubSheet(true));
+  document.getElementById('pRotate').addEventListener('click', ()=>{ if(document.fullscreenElement) document.exitFullscreen(); else document.getElementById('pStage').requestFullscreen().catch(()=>{}); });
+  document.getElementById('pRew').addEventListener('click', ()=>{ video.currentTime = Math.max(0, video.currentTime -10); });
+  document.getElementById('pFwd').addEventListener('click', ()=>{ video.currentTime = Math.min(video.duration, video.currentTime +10); });
+  document.getElementById('pPlay').addEventListener('click', ()=>{ video.paused ? video.play() : video.pause(); });
+  document.getElementById('pStage').addEventListener('click', (e)=>{ if(e.target.id==='pStage' || e.target.id==='pVideo') toggleControlsFade(); });
+  document.getElementById('pSpeed').addEventListener('click', ()=>{
+    P.rateIdx = (P.rateIdx+1) % P.playbackRates.length;
+    const rate = P.playbackRates[P.rateIdx];
+    video.playbackRate = rate;
+    document.getElementById('pSpeed').textContent = `⚡ Velocidade ${rate}x`;
+  });
+  document.getElementById('pLock').addEventListener('click', ()=>{
+    P.locked = !P.locked;
+    document.getElementById('pStage').classList.toggle('locked', P.locked);
+    document.getElementById('pLock').textContent = P.locked ? '🔓 Destravar' : '🔒 Travar';
+    if(P.locked) showControls(true);
+  });
+  document.getElementById('pAudio').addEventListener('click', ()=>toggleDubSheet(true));
+  document.getElementById('pNext').addEventListener('click', ()=>goNext(false));
+  document.getElementById('pPrev').addEventListener('click', ()=>goPrev());
+  const close2 = document.getElementById('pClose2'); if(close2) close2.addEventListener('click', ()=>closePlayer());
+
   document.getElementById('dubClose').addEventListener('click', ()=>toggleDubSheet(false));
-  document.getElementById('voiceGrid').addEventListener('click', (e)=>{
-    const b = e.target.closest('[data-voice]'); if (!b) return;
-    P.dubVoiceProfile = b.dataset.voice;
-    document.querySelectorAll('.voice-btn').forEach(x=>x.classList.remove('active'));
-    b.classList.add('active');
-  });
-  document.getElementById('pauseSwitch').addEventListener('click', (e)=>{
-    P.pauseWhileSpeaking = !P.pauseWhileSpeaking;
-    e.currentTarget.classList.toggle('on', P.pauseWhileSpeaking);
-  });
+  document.getElementById('btnCc').addEventListener('click', (e)=>{ P.ccOn = !P.ccOn; e.target.textContent = `CC ${P.ccOn?'ON':'OFF'}`; e.target.classList.toggle('active', P.ccOn); if (!P.ccOn) document.getElementById('subOverlay').classList.add('hidden'); });
+  document.getElementById('btnDubToggle').addEventListener('click', (e)=>{ P.dubOn = !P.dubOn; e.target.textContent = P.dubOn ? '🔊 Dublagem ON' : '🔇 Dublagem OFF'; e.target.classList.toggle('active', P.dubOn); });
+  document.getElementById('voiceGrid').addEventListener('click', (e)=>{ const b = e.target.closest('[data-voice]'); if (!b) return; P.dubVoiceProfile = b.dataset.voice; document.querySelectorAll('.voice-btn').forEach(x=>x.classList.remove('active')); b.classList.add('active'); });
+  document.getElementById('pauseSwitch').addEventListener('click', (e)=>{ P.pauseWhileSpeaking = !P.pauseWhileSpeaking; e.currentTarget.classList.toggle('on', P.pauseWhileSpeaking); });
   document.getElementById('dubAction').addEventListener('click', toggleDubbing);
-  setupGesture('gzLeft', -10);
-  setupGesture('gzMid', 0);
-  setupGesture('gzRight', 10);
   document.addEventListener('keydown', keyHandler);
   showControls();
 }
-function keyHandler(e){
-  if (!P) return;
-  const video = document.getElementById('pVideo'); if (!video) return;
-  if (e.key === 'Escape') closePlayer();
-  if (e.key === ' ') { e.preventDefault(); video.paused ? video.play() : video.pause(); }
-  if (e.key === 'ArrowRight') video.currentTime += 10;
-  if (e.key === 'ArrowLeft') video.currentTime -= 10;
-}
-function setupGesture(zoneId, seekAmount){
-  const zone = document.getElementById(zoneId);
-  let lastTap = 0;
-  zone.addEventListener('click', ()=>{
-    const now = Date.now();
-    const video = document.getElementById('pVideo');
-    if (now - lastTap < 350) {
-      if (seekAmount !== 0) { video.currentTime = Math.max(0, video.currentTime + seekAmount); showControls(); }
-      lastTap = 0;
-    } else {
-      lastTap = now;
-      setTimeout(()=>{
-        if (Date.now() - lastTap >= 340) return;
-        if (seekAmount === 0) { video.paused ? video.play() : video.pause(); }
-        else { showControls(); toggleControlsFade(); }
-      }, 350);
-    }
-  });
-}
-function showControls(keepOpen){
-  document.getElementById('pTop').style.opacity = '1';
-  document.getElementById('pBottom').style.opacity = '1';
-  if (P.hideTimer) clearTimeout(P.hideTimer);
-  if (!keepOpen) P.hideTimer = setTimeout(()=>{
-    document.getElementById('pTop').style.opacity = '0';
-    document.getElementById('pBottom').style.opacity = '0';
-  }, 3000);
-}
-function toggleControlsFade(){
-  const top = document.getElementById('pTop');
-  const visible = top.style.opacity !== '0';
-  if (visible) { top.style.opacity='0'; document.getElementById('pBottom').style.opacity='0'; }
-  else showControls();
-}
-function updateSubtitle(t){
-  if (!P.ccOn || !P.cues.length) { document.getElementById('subOverlay').classList.add('hidden'); return; }
-  const cue = P.cues.find(c => t >= c.start && t <= c.end);
-  const overlay = document.getElementById('subOverlay');
-  if (cue) {
-    overlay.classList.remove('hidden');
-    document.getElementById('subText').textContent = cue.text;
-    if (P.dubOn && cue.id !== P.lastCueId) { P.lastCueId = cue.id; speakCue(cue.text); }
-  } else {
-    overlay.classList.add('hidden');
-  }
-}
-let voicesCache = [];
-function loadVoices(){ voicesCache = window.speechSynthesis ? window.speechSynthesis.getVoices() : []; }
-if (window.speechSynthesis) { loadVoices(); window.speechSynthesis.addEventListener('voiceschanged', loadVoices); }
-function pickVoice(profile){
-  const ptVoices = voicesCache.filter(v => v.lang.toLowerCase().startsWith('pt'));
-  const pool = ptVoices.length ? ptVoices : voicesCache;
-  if (!pool.length) return null;
-  if (profile === 'mulher') return pool.find(v=>/female|luciana|maria|heloisa|fem/i.test(v.name)) || pool[0];
-  if (profile === 'homem') return pool.find(v=>/male|daniel|felipe|carlos|masc/i.test(v.name)) || pool[1] || pool[0];
-  if (profile === 'crianca') return pool.find(v=>/child|kid|crian/i.test(v.name)) || pool[0];
-  return pool[0];
-}
-function speakCue(text){
-  if (!window.speechSynthesis) return;
-  try {
-    window.speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(text);
-    const v = pickVoice(P.dubVoiceProfile);
-    if (v) u.voice = v;
-    u.lang = 'pt-BR';
-    u.rate = P.dubVoiceProfile === 'crianca' ? 1.15 : 1;
-    u.pitch = P.dubVoiceProfile === 'crianca' ? 1.6 : P.dubVoiceProfile === 'mulher' ? 1.15 : P.dubVoiceProfile === 'homem' ? 0.9 : 1;
-    const video = document.getElementById('pVideo');
-    if (P.pauseWhileSpeaking && video) video.pause();
-    u.onend = () => { if (P.pauseWhileSpeaking && video && P.dubOn) video.play().catch(()=>{}); };
-    window.speechSynthesis.speak(u);
-  } catch(e){ log('⚠ Dublagem falhou: ' + e.message); }
-}
-function toggleDubSheet(open){ P.dubOpen = open; document.getElementById('dubSheet').classList.toggle('open', open); }
-function toggleDubbing(){
-  P.dubOn = !P.dubOn;
-  P.lastCueId = -1;
-  const btn = document.getElementById('dubAction');
-  if (P.dubOn) { btn.textContent = '■ PARAR DUBLAGEM'; btn.classList.remove('start'); btn.classList.add('stop'); }
-  else { btn.textContent = '▶ INICIAR DUBLAGEM'; btn.classList.add('start'); btn.classList.remove('stop'); window.speechSynthesis?.cancel(); const v=document.getElementById('pVideo'); if(v&&v.paused) v.play().catch(()=>{}); }
-}
-function checkNextEpisode(video){
-  if (!P || P.item.type !== 'episode') return;
-  const hasNext = P.index < P.list.length - 1;
-  if (!hasNext) return;
-  const remaining = (video.duration||0) - video.currentTime;
-  const existing = document.getElementById('nextCard');
-  if (remaining <= 10 && remaining > 0 && video.duration > 30) {
-    if (!existing) showNextCard();
-  } else if (existing) { existing.remove(); if (P.nextTimer) clearInterval(P.nextTimer); }
-}
-function showNextCard(){
-  const next = P.list[P.index+1];
-  P.nextSeconds = 6;
-  const box = document.createElement('div');
-  box.className = 'next-card'; box.id = 'nextCard';
-  box.innerHTML = `<div class="lbl" id="nextLbl">A SEGUIR EM ${P.nextSeconds}s</div>
-    <div class="row"><div class="thumb" id="nextThumb"></div><div class="info"><b>${epLabel(next.season,next.episode)}</b><span style="font-size:11px;color:var(--dim2)">${next.epTitle||next.file}</span></div></div>
-    <div class="btns"><button class="cancel" id="nextCancel">CANCELAR</button><button class="play" id="nextPlay">AGORA</button></div>`;
-  document.getElementById('pStage').appendChild(box);
-  getThumbnail(next.fullPath, state.fileMap.get(next.fullPath)).then(url=>{ if (url) document.getElementById('nextThumb').innerHTML = `<img src="${url}">`; });
-  P.nextTimer = setInterval(()=>{
-    P.nextSeconds--;
-    const lbl = document.getElementById('nextLbl'); if (lbl) lbl.textContent = `A SEGUIR EM ${P.nextSeconds}s`;
-    if (P.nextSeconds <= 0) { clearInterval(P.nextTimer); goNext(); }
-  }, 1000);
-  document.getElementById('nextCancel').addEventListener('click', ()=>{ clearInterval(P.nextTimer); box.remove(); });
-  document.getElementById('nextPlay').addEventListener('click', ()=>{ clearInterval(P.nextTimer); goNext(); });
-}
+function keyHandler(e){ if (!P) return; const video = document.getElementById('pVideo'); if (!video) return; if (e.key === 'Escape') closePlayer(); if (e.key === ' ') { e.preventDefault(); video.paused ? video.play() : video.pause(); } if (e.key === 'ArrowRight') video.currentTime += 10; if (e.key === 'ArrowLeft') video.currentTime -= 10; }
+function showControls(keep){ const top=document.getElementById('pTop'), bottom=document.getElementById('pBottom'), center=document.getElementById('pCenter'); if(!top) return; top.style.opacity='1'; bottom.style.opacity='1'; center.style.opacity='1'; if(P.hideTimer) clearTimeout(P.hideTimer); if(!keep) P.hideTimer=setTimeout(()=>{ top.style.opacity='0'; bottom.style.opacity='0'; center.style.opacity='0'; }, 3000); }
+function toggleControlsFade(){ const top=document.getElementById('pTop'); if(!top) return; const visible = top.style.opacity!=='0'; if(visible){ top.style.opacity='0'; document.getElementById('pBottom').style.opacity='0'; document.getElementById('pCenter').style.opacity='0'; } else showControls(); }
+function updateSubtitle(t){ if (!P.ccOn || !P.cues.length) { document.getElementById('subOverlay').classList.add('hidden'); return; } const cue = P.cues.find(c => t >= c.start && t <= c.end); const overlay = document.getElementById('subOverlay'); if (cue) { overlay.classList.remove('hidden'); document.getElementById('subText').textContent = cue.text; if (P.dubOn && cue.id !== P.lastCueId) { P.lastCueId = cue.id; speakCue(cue.text); } } else { overlay.classList.add('hidden'); } }
+let voicesCache = []; function loadVoices(){ voicesCache = window.speechSynthesis ? window.speechSynthesis.getVoices() : []; } if (window.speechSynthesis) { loadVoices(); window.speechSynthesis.addEventListener('voiceschanged', loadVoices); }
+function pickVoice(profile){ const ptVoices = voicesCache.filter(v => v.lang.toLowerCase().startsWith('pt')); const pool = ptVoices.length ? ptVoices : voicesCache; if (!pool.length) return null; if (profile === 'mulher') return pool.find(v=>/female|luciana|maria|heloisa|fem/i.test(v.name)) || pool[0]; if (profile === 'homem') return pool.find(v=>/male|daniel|felipe|carlos|masc/i.test(v.name)) || pool[1] || pool[0]; if (profile === 'crianca') return pool.find(v=>/child|kid|crian/i.test(v.name)) || pool[0]; return pool[0]; }
+function speakCue(text){ if (!window.speechSynthesis) return; try { window.speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(text); const v = pickVoice(P.dubVoiceProfile); if (v) u.voice = v; u.lang = 'pt-BR'; u.rate = P.dubVoiceProfile === 'crianca' ? 1.15 : 1; u.pitch = P.dubVoiceProfile === 'crianca' ? 1.6 : P.dubVoiceProfile === 'mulher' ? 1.15 : P.dubVoiceProfile === 'homem' ? 0.9 : 1; const video = document.getElementById('pVideo'); if (P.pauseWhileSpeaking && video) video.pause(); u.onend = () => { if (P.pauseWhileSpeaking && video && P.dubOn) video.play().catch(()=>{}); }; window.speechSynthesis.speak(u); } catch(e){} }
+function toggleDubSheet(open){ document.getElementById('dubSheet').classList.toggle('open', open); }
+function toggleDubbing(){ P.dubOn = !P.dubOn; P.lastCueId = -1; const btn = document.getElementById('dubAction'); if (P.dubOn) { btn.textContent = '■ PARAR DUBLAGEM'; btn.classList.remove('start'); btn.classList.add('stop'); } else { btn.textContent = '▶ INICIAR DUBLAGEM'; btn.classList.add('start'); btn.classList.remove('stop'); window.speechSynthesis?.cancel(); const v=document.getElementById('pVideo'); if(v&&v.paused) v.play().catch(()=>{}); } }
 function goNext(fromEnded){
   if (!P) return;
-  if (P.item.type !== 'episode' || P.index >= P.list.length-1) { if (fromEnded) closePlayer(); return; }
+  // para série E filme: pula pro próximo da lista
+  if (P.index >= P.list.length-1) { if (fromEnded) closePlayer(); return; }
   const list = P.list, idx = P.index+1;
   closePlayer(true);
   openPlayer(list, idx);
 }
-function closePlayer(keepListeners){
-  window.speechSynthesis?.cancel();
-  if (P && P.hideTimer) clearTimeout(P.hideTimer);
-  if (P && P.nextTimer) clearInterval(P.nextTimer);
-  const v = document.getElementById('pVideo');
-  if (v && v.src) URL.revokeObjectURL(v.src);
-  document.getElementById('playerRoot').innerHTML = '';
-  if (!keepListeners) document.removeEventListener('keydown', keyHandler);
-  P = null;
+function goPrev(){
+  if (!P || P.index <=0) return;
+  const list = P.list, idx = P.index-1;
+  closePlayer(true);
+  openPlayer(list, idx);
 }
-document.getElementById('btnJson').addEventListener('click', ()=>{
-  const data = { movies: state.all.filter(x=>x.type==='movie'), series: state.seriesList };
-  const blob = new Blob([JSON.stringify(data,null,2)], { type:'application/json' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a'); a.href=url; a.download='filmes.json'; a.click();
-  URL.revokeObjectURL(url);
-  log('✓ filmes.json baixado.');
-});
-document.getElementById('btnHelp').addEventListener('click', ()=>{
-  document.getElementById('helpRoot').innerHTML = `
-  <div style="position:fixed;inset:0;z-index:90;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:16px" id="helpBg">
-    <div style="width:100%;max-width:560px;max-height:88vh;overflow:auto;border-radius:20px;background:var(--surface);border:1px solid var(--border);padding:20px">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><b>COMO USAR NO PROJETOR A12</b><button class="icon-btn" id="helpClose" style="background:rgba(255,255,255,.1)">✕</button></div>
-      <div style="font-size:13px;color:var(--dim);line-height:1.6;display:flex;flex-direction:column;gap:10px">
-        <div><b style="color:#fff">1. No celular:</b> toque em SELECIONAR PASTA e escolha a pasta com filmes/séries.</div>
-        <div><b style="color:#fff">2. No pendrive:</b> deixe o HTML e a pasta de vídeos juntos (com os .srt do lado, se tiver).</div>
-        <div><b style="color:#fff">3. No projetor:</b> plugue o pendrive, abra o gerenciador de arquivos, toque no .html. Tudo roda local.</div>
-        <div style="background:rgba(229,9,20,.1);border:1px solid rgba(229,9,20,.2);border-radius:10px;padding:10px;font-size:12px">A dublagem usa a voz do próprio Android (sem baixar nada). Só aparece se existir um <code>.srt</code>/<code>.vtt</code> com o mesmo nome do vídeo.</div>
-      </div>
-      <button class="btn-main" id="helpOk" style="width:100%;margin-top:16px">ENTENDI</button>
-    </div>
-  </div>`;
-  document.getElementById('helpBg').addEventListener('click', e=>{ if (e.target.id==='helpBg') closeHelp(); });
-  document.getElementById('helpClose').addEventListener('click', closeHelp);
-  document.getElementById('helpOk').addEventListener('click', closeHelp);
-});
+function closePlayer(keepListeners){ window.speechSynthesis?.cancel(); if (P && P.hideTimer) clearTimeout(P.hideTimer); const v = document.getElementById('pVideo'); if (v && v.src) URL.revokeObjectURL(v.src); document.getElementById('playerRoot').innerHTML = ''; try{ if(screen.orientation && screen.orientation.unlock) screen.orientation.unlock(); if(document.fullscreenElement) document.exitFullscreen(); }catch(e){} if (!keepListeners) document.removeEventListener('keydown', keyHandler); P = null; }
+document.getElementById('btnJson').addEventListener('click', ()=>{ const data = { movies: state.all.filter(x=>x.type==='movie'), series: state.seriesList }; const blob = new Blob([JSON.stringify(data,null,2)], { type:'application/json' }); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href=url; a.download='filmes.json'; a.click(); URL.revokeObjectURL(url); log('✓ filmes.json baixado.'); });
+document.getElementById('btnHelp').addEventListener('click', ()=>{ document.getElementById('helpRoot').innerHTML = `<div style="position:fixed;inset:0;z-index:90;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:16px" id="helpBg"><div style="width:100%;max-width:560px;max-height:88vh;overflow:auto;border-radius:20px;background:var(--surface);border:1px solid var(--border);padding:20px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><b>PLAYER PRO v5</b><button class="icon-btn" id="helpClose">✕</button></div><div style="font-size:13px;color:var(--dim);line-height:1.6"><p>• Toque na tela mostra/esconde controles</p><p>• Botão ⛶ força tela cheia paisagem (projetor)</p><p>• Velocidade: 0.5x até 2x</p><p>• Áudio & Legendas: ativa CC e dublagem por voz</p><p>• Travar: bloqueia toques acidentais</p></div><button class="btn-main" id="helpOk" style="width:100%;margin-top:16px">ENTENDI</button></div></div>`; document.getElementById('helpBg').addEventListener('click', e=>{ if (e.target.id==='helpBg') closeHelp(); }); document.getElementById('helpClose').addEventListener('click', closeHelp); document.getElementById('helpOk').addEventListener('click', closeHelp); });
 function closeHelp(){ document.getElementById('helpRoot').innerHTML=''; }
 render();
 
 </script>
 <script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./sw.js');
-}
+if ('serviceWorker' in navigator) { navigator.serviceWorker.register('./sw.js'); }
 </script>
 </body>
 </html>
