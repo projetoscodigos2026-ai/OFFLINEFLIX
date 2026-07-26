@@ -162,6 +162,28 @@ h1 span{color:var(--dim)}
 .icon-btn{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.12);border:none;color:#fff;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);flex-shrink:0}
 footer{margin-top:40px;padding:24px 0;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:8px;font-size:11px;color:var(--dim3)}
 @media(min-width:640px){footer{flex-direction:row;justify-content:space-between}}
+
+/* === CONTROLE REMOTO / D-PAD NAVIGATION PATCH === */
+:focus{ outline: none; }
+.remote-nav *:focus,
+.remote-nav .card:focus,
+.remote-nav .card-thumb:focus,
+.remote-nav .ep-play:focus,
+.remote-nav .filter-btn:focus,
+.remote-nav .pill-btn:focus,
+.remote-nav .btn-main:focus,
+.remote-nav .btn-secondary:focus,
+.remote-nav .icon-btn:focus,
+.remote-nav .voice-btn:focus,
+.remote-nav input:focus,
+.remote-nav button:focus{
+  outline: 3px solid var(--red) !important;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px rgba(229,9,20,.25);
+  transform: translateY(-2px) scale(1.02);
+  z-index: 5;
+  position: relative;
+}
 </style>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0a0a0a">
@@ -264,8 +286,9 @@ function renderCatalog(){
   root.querySelectorAll('[data-series]').forEach(el=>el.addEventListener('click', ()=>openSeries(el.dataset.series)));
   root.querySelectorAll('[data-play-movie]').forEach(el=>el.addEventListener('click', ()=>{ const m = state.all.find(x=>x.id===el.dataset.playMovie); if (m) openPlayer([m], 0); }));
   root.querySelectorAll('[data-thumb-for]').forEach(async el=>{ const path = el.dataset.thumbFor; const file = state.fileMap.get(path); const url = await getThumbnail(path, file); if (url) el.insertAdjacentHTML('afterbegin', `<img src="${url}">`); });
+  focusFirstInCatalog();
 }
-function openSeries(name){ const s = state.seriesList.find(x=>x.name===name); if (!s) return; const root = document.getElementById('catalogRoot'); root.innerHTML = `<button class="back-btn" id="btnBack">← Voltar</button><h2 style="font-size:20px;font-weight:800;margin-bottom:14px">${s.name} · ${s.episodes.length} eps</h2>${s.episodes.map((ep,i)=>`<div class="ep-row ${state.watched.has(ep.fullPath)?'watched':''}"><div class="ep-thumb" data-thumb-for="${ep.fullPath}">${ep.season}x${ep.episode}</div><div class="ep-info"><div style="font-weight:700;font-size:13px">${epLabel(ep.season,ep.episode)} ${ep.epTitle?'• '+ep.epTitle:''} ${ep.hasSub?'<span class="cc-badge">CC</span>':''}</div><div class="file">${ep.file}</div></div><button class="ep-play" data-idx="${i}">▶</button></div>`).join('')}`; document.getElementById('btnBack').addEventListener('click', renderCatalog); root.querySelectorAll('[data-idx]').forEach(btn=>btn.addEventListener('click', ()=>openPlayer(s.episodes, +btn.dataset.idx))); root.querySelectorAll('[data-thumb-for]').forEach(async el=>{ const path = el.dataset.thumbFor; const file = state.fileMap.get(path); const url = await getThumbnail(path, file); if (url) el.innerHTML = `<img src="${url}">`; }); }
+function openSeries(name){ const s = state.seriesList.find(x=>x.name===name); if (!s) return; const root = document.getElementById('catalogRoot'); root.innerHTML = `<button class="back-btn" id="btnBack">← Voltar</button><h2 style="font-size:20px;font-weight:800;margin-bottom:14px">${s.name} · ${s.episodes.length} eps</h2>${s.episodes.map((ep,i)=>`<div class="ep-row ${state.watched.has(ep.fullPath)?'watched':''}"><div class="ep-thumb" data-thumb-for="${ep.fullPath}">${ep.season}x${ep.episode}</div><div class="ep-info"><div style="font-weight:700;font-size:13px">${epLabel(ep.season,ep.episode)} ${ep.epTitle?'• '+ep.epTitle:''} ${ep.hasSub?'<span class="cc-badge">CC</span>':''}</div><div class="file">${ep.file}</div></div><button class="ep-play" data-idx="${i}">▶</button></div>`).join('')}`; document.getElementById('btnBack').addEventListener('click', renderCatalog); root.querySelectorAll('[data-idx]').forEach(btn=>btn.addEventListener('click', ()=>openPlayer(s.episodes, +btn.dataset.idx))); root.querySelectorAll('[data-thumb-for]').forEach(async el=>{ const path = el.dataset.thumbFor; const file = state.fileMap.get(path); const url = await getThumbnail(path, file); if (url) el.innerHTML = `<img src="${url}">`; }); focusFirstInCatalog(); }
 
 
 let P = null;
@@ -375,6 +398,7 @@ function openPlayer(list, index){
   document.getElementById('dubAction').addEventListener('click', toggleDubbing);
   document.addEventListener('keydown', keyHandler);
   showControls();
+  document.getElementById('pPlay').focus();
 }
 function keyHandler(e){ if (!P) return; const video = document.getElementById('pVideo'); if (!video) return; if (e.key === 'Escape') closePlayer(); if (e.key === ' ') { e.preventDefault(); video.paused ? video.play() : video.pause(); } if (e.key === 'ArrowRight') video.currentTime += 10; if (e.key === 'ArrowLeft') video.currentTime -= 10; }
 function showControls(keep){ const top=document.getElementById('pTop'), bottom=document.getElementById('pBottom'), center=document.getElementById('pCenter'); if(!top) return; top.style.opacity='1'; bottom.style.opacity='1'; center.style.opacity='1'; if(P.hideTimer) clearTimeout(P.hideTimer); if(!keep) P.hideTimer=setTimeout(()=>{ top.style.opacity='0'; bottom.style.opacity='0'; center.style.opacity='0'; }, 3000); }
@@ -399,10 +423,102 @@ function goPrev(){
   closePlayer(true);
   openPlayer(list, idx);
 }
-function closePlayer(keepListeners){ window.speechSynthesis?.cancel(); if (P && P.hideTimer) clearTimeout(P.hideTimer); const v = document.getElementById('pVideo'); if (v && v.src) URL.revokeObjectURL(v.src); document.getElementById('playerRoot').innerHTML = ''; try{ if(screen.orientation && screen.orientation.unlock) screen.orientation.unlock(); if(document.fullscreenElement) document.exitFullscreen(); }catch(e){} if (!keepListeners) document.removeEventListener('keydown', keyHandler); P = null; }
+function closePlayer(keepListeners){ window.speechSynthesis?.cancel(); if (P && P.hideTimer) clearTimeout(P.hideTimer); const v = document.getElementById('pVideo'); if (v && v.src) URL.revokeObjectURL(v.src); document.getElementById('playerRoot').innerHTML = ''; try{ if(screen.orientation && screen.orientation.unlock) screen.orientation.unlock(); if(document.fullscreenElement) document.exitFullscreen(); }catch(e){} if (!keepListeners) document.removeEventListener('keydown', keyHandler); P = null; focusFirstInCatalog(); }
 document.getElementById('btnJson').addEventListener('click', ()=>{ const data = { movies: state.all.filter(x=>x.type==='movie'), series: state.seriesList }; const blob = new Blob([JSON.stringify(data,null,2)], { type:'application/json' }); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href=url; a.download='filmes.json'; a.click(); URL.revokeObjectURL(url); log('✓ filmes.json baixado.'); });
 document.getElementById('btnHelp').addEventListener('click', ()=>{ document.getElementById('helpRoot').innerHTML = `<div style="position:fixed;inset:0;z-index:90;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:16px" id="helpBg"><div style="width:100%;max-width:560px;max-height:88vh;overflow:auto;border-radius:20px;background:var(--surface);border:1px solid var(--border);padding:20px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><b>PLAYER PRO v5</b><button class="icon-btn" id="helpClose">✕</button></div><div style="font-size:13px;color:var(--dim);line-height:1.6"><p>• Toque na tela mostra/esconde controles</p><p>• Botão ⛶ força tela cheia paisagem (projetor)</p><p>• Velocidade: 0.5x até 2x</p><p>• Áudio & Legendas: ativa CC e dublagem por voz</p><p>• Travar: bloqueia toques acidentais</p></div><button class="btn-main" id="helpOk" style="width:100%;margin-top:16px">ENTENDI</button></div></div>`; document.getElementById('helpBg').addEventListener('click', e=>{ if (e.target.id==='helpBg') closeHelp(); }); document.getElementById('helpClose').addEventListener('click', closeHelp); document.getElementById('helpOk').addEventListener('click', closeHelp); });
 function closeHelp(){ document.getElementById('helpRoot').innerHTML=''; }
+
+/* === CONTROLE REMOTO / D-PAD NAVIGATION PATCH === */
+document.documentElement.classList.add('remote-nav');
+
+function isTextInput(el){ return !!el && (el.tagName==='INPUT' || el.tagName==='TEXTAREA'); }
+
+function getFocusableEls(){
+  return Array.from(document.querySelectorAll('button, input, [tabindex]'))
+    .filter(el=>{
+      if (el.disabled) return false;
+      const r = el.getBoundingClientRect();
+      if (r.width===0 && r.height===0) return false;
+      const style = getComputedStyle(el);
+      if (style.visibility==='hidden' || style.display==='none') return false;
+      if (parseFloat(style.opacity) === 0 && el.closest('#helpRoot,#dubSheet.open') === null) {
+        // ignora elementos escondidos por opacidade (ex: controles do player que sumiram)
+        if (!el.closest('.player')) return false;
+      }
+      return true;
+    });
+}
+
+function focusFirstInCatalog(){
+  // só define foco automático se nada relevante já estiver focado (ex: campo de busca)
+  const active = document.activeElement;
+  if (active && (active.id==='searchInput')) return;
+  const firstCard = document.querySelector('#catalogRoot .card, #catalogRoot .card-thumb, #catalogRoot .ep-play, #catalogRoot #btnBack');
+  if (firstCard) firstCard.focus();
+  else document.getElementById('btnPick').focus();
+}
+
+function spatialNav(direction){
+  const current = document.activeElement;
+  const all = getFocusableEls();
+  if (!all.length) return;
+  if (!current || current===document.body || !all.includes(current)) { all[0].focus(); all[0].scrollIntoView({block:'nearest'}); return; }
+  const cRect = current.getBoundingClientRect();
+  const cx = cRect.left + cRect.width/2, cy = cRect.top + cRect.height/2;
+  let best = null, bestScore = Infinity;
+  all.forEach(el=>{
+    if (el===current) return;
+    const r = el.getBoundingClientRect();
+    const ex = r.left + r.width/2, ey = r.top + r.height/2;
+    const dx = ex-cx, dy = ey-cy;
+    let primary, cross, valid;
+    if (direction==='ArrowRight'){ valid = dx>2; primary=dx; cross=dy; }
+    else if (direction==='ArrowLeft'){ valid = dx<-2; primary=-dx; cross=dy; }
+    else if (direction==='ArrowDown'){ valid = dy>2; primary=dy; cross=dx; }
+    else if (direction==='ArrowUp'){ valid = dy<-2; primary=-dy; cross=dx; }
+    if (!valid) return;
+    const score = primary + Math.abs(cross)*2.4;
+    if (score < bestScore){ bestScore=score; best=el; }
+  });
+  if (best){ best.focus(); best.scrollIntoView({block:'nearest', behavior:'smooth'}); }
+}
+
+document.addEventListener('keydown', function(e){
+  const dirKeys = ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'];
+  if (!dirKeys.includes(e.key)) return;
+  // se estiver no player, o keyHandler dele já cuida de Left/Right (seek); deixa passar
+  if (P) return;
+  // se o foco estiver num campo de texto, deixa a seta mover o cursor normalmente
+  if (isTextInput(document.activeElement)) return;
+  e.preventDefault();
+  spatialNav(e.key);
+});
+
+// tecla Voltar/ESC do controle: se estiver dentro de uma série, volta pro catálogo;
+// se estiver no player, fecha o player; senão não faz nada (não mexe em mais nada)
+document.addEventListener('keydown', function(e){
+  const isBack = e.key === 'Escape' || e.key === 'Backspace' || e.keyCode === 27 || e.keyCode === 8 || e.keyCode === 166 || e.keyCode === 461;
+  if (!isBack) return;
+  if (isTextInput(document.activeElement) && e.key === 'Backspace') return; // não atrapalha digitação na busca
+  if (P) { e.preventDefault(); closePlayer(); return; }
+  const back = document.getElementById('btnBack');
+  if (back) { e.preventDefault(); back.click(); }
+});
+
+// aviso rápido na tela avisando que o modo controle remoto está ativo
+window.addEventListener('load', ()=>{
+  setTimeout(()=>{
+    const hint = document.createElement('div');
+    hint.textContent = '🎮 SETAS + OK para navegar • VOLTAR/ESC retorna';
+    hint.style.cssText = 'position:fixed;bottom:14px;left:14px;z-index:999;background:rgba(0,0,0,.85);border:1px solid var(--red);color:#fff;font-size:11px;padding:8px 12px;border-radius:8px;font-weight:600;box-shadow:0 4px 14px rgba(0,0,0,.4)';
+    document.body.appendChild(hint);
+    setTimeout(()=>{ hint.style.transition='opacity .4s'; hint.style.opacity='0'; setTimeout(()=>hint.remove(), 500); }, 5000);
+  }, 700);
+});
+
+// garante que ao carregar a página, o controle já tenha algo focado pra apertar OK/Enter
+window.addEventListener('load', ()=>{ setTimeout(()=>{ document.getElementById('btnPick').focus(); }, 200); });
+
 render();
 
 </script>
