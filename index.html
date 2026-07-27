@@ -1,25 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head><!-- PLAYABLE_TOUCH_PATCH_V1 --><script>
-(function() {
-  if (window.__playableTouchPatchInstalled) return;
-  window.__playableTouchPatchInstalled = true;
-  var origAdd = EventTarget.prototype.addEventListener;
-  var blockedTypes = { touchstart: 1, touchmove: 1, wheel: 1 };
-  EventTarget.prototype.addEventListener = function(type, listener, options) {
-    if (blockedTypes[type]) {
-      if (options === undefined || options === null) {
-        options = { passive: true };
-      } else if (typeof options === 'boolean') {
-        options = { capture: options, passive: true };
-      } else {
-        options = Object.assign({}, options, { passive: true });
-      }
-    }
-    return origAdd.call(this, type, listener, options);
-  };
-})();
-</script><script>window.Intl=window.Intl||{};Intl.t=function(s){return(Intl._locale&&Intl._locale[s])||s;};</script>
+<head><script>window.Intl=window.Intl||{};Intl.t=function(s){return(Intl._locale&&Intl._locale[s])||s;};</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>OFFLINEFLIX</title>
@@ -492,6 +473,19 @@ document.addEventListener('keydown', function(e){
   if (isTextInput(document.activeElement)) return;
   e.preventDefault();
   spatialNav(e.key);
+});
+
+// botão OK/Enter/Select do controle: alguns WebViews de projetor não convertem
+// Enter num clique nativo do botão focado sozinhos, então forçamos aqui.
+document.addEventListener('keydown', function(e){
+  const isOk = e.key === 'Enter' || e.key === 'Select' || e.keyCode === 13 || e.keyCode === 66;
+  if (!isOk) return;
+  const active = document.activeElement;
+  if (isTextInput(active)) return; // não interfere ao digitar/confirmar busca
+  if (active && active !== document.body && typeof active.click === 'function') {
+    e.preventDefault();
+    active.click();
+  }
 });
 
 // tecla Voltar/ESC do controle: se estiver dentro de uma série, volta pro catálogo;
